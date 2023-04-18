@@ -187,8 +187,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_u,		setlayout,	{.v = &layouts[5]} }, /* monocle */
 	{ MODKEY,			XK_i,		setlayout,	{.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
-	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
+/*	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },*/
+	{ MODKEY,			XK_o,		incnmaster,     {.i = +0 } },
+	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -0 } },
 	{ MODKEY,			XK_p,			spawn,		SHCMD("mpv /home/andre/media/focus --shuffle") },
 /*	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause; pauseallmpv") },
 	{ MODKEY,			XK_bracketleft,		spawn,		{.v = (const char*[]){ "mpc", "seek", "-10", NULL } } },
@@ -208,9 +210,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } },
-	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
+	{ MODKEY|ShiftMask,			XK_h,		setmfact,	{.f = -0.05} },
 	/* J and K are automatically bound above in STACKEYS */
-	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
+	{ MODKEY|ShiftMask,		XK_l,		setmfact,      	{.f = +0.05} },
 	{ MODKEY,			XK_semicolon,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,	shifttag,	{ .i = 1 } },
 	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
@@ -247,6 +249,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_Page_Down,	shiftview,	{ .i = +1 } },
 	{ MODKEY|ShiftMask,		XK_Page_Down,	shifttag,	{ .i = +1 } },
 /*	{ MODKEY,			XK_Insert,	spawn,		SHCMD("xdotool type $(grep -v '^#' ~/.local/share/larbs/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },*/
+	{ 0,     			XK_Insert,	spawn,		SHCMD("xdotool click 1") },
 
 /*	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },*/
 	{ MODKEY,			XK_F2,		spawn,		{.v = (const char*[]){ "tutorialvids", NULL } } },
@@ -269,7 +272,7 @@ static Key keys[] = {
 /*	{ MODKEY|ShiftMask,		XK_Print,	spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },*/
 /*	{ MODKEY,			XK_Delete,	spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },*/
 /*	{ MODKEY,			XK_Scroll_Lock,	spawn,		SHCMD("killall screenkey || screenkey &") },*/
-	{ MODKEY|ShiftMask,		XK_l,		spawn,		SHCMD("systemctl suspend") },
+	{ MODKEY,		    XK_l,		spawn,		SHCMD("systemctl suspend") },
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
